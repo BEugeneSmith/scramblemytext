@@ -3,7 +3,7 @@ from app.manipulate import Name
 from app.forms import NameForm
 from flask import render_template,redirect,url_for,request
 from flask.ext.bootstrap import Bootstrap
-from twilio import twilio
+from twilio import twiml
 
 bootstrap = Bootstrap(app)
 
@@ -27,5 +27,5 @@ def sms():
 
     name = Name(body)
 
-    response.message("pig latin:{0}\n,backwards:{1}".format(name.piglatin(),name.backwards()))
+    response.message("pig latin:{0},backwards:{1}".format(name.piglatin(),name.backwards()))
     return str(response)
