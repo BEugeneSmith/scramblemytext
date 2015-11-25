@@ -27,5 +27,5 @@ def sms():
 
     name = Name(body)
 
-    response.message("pig latin:{0},\nbackwards:{1}".format(name.piglatin(),name.backwards()))
+    response.message("\npig latin:{0},\nbackwards:{1}".format(name.piglatin(),name.backwards()))
     return str(response)
