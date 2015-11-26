@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-<p>piglatin: {{ textr.piglatin() }}</p>
+<p>piglatin: {{ text.piglatin() }}</p>
 <p>palindromic: {{ text.palindrome() }}</p>
 <p>backwards: {{ text.backwards() }}</p>
+<div class="circle">
+  {{ svg|safe }}
+</div>
 {% endblock %}
