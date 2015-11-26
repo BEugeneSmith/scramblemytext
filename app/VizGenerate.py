@@ -74,7 +74,7 @@ class SVG:
         self.SVG = self.__fillSVG()
 
     def __fillSVG(self):
-        svg = '<svg width="1000" height="1000">'
+        svg = '<svg width="100%" height="100%">'
 
         for i in range(15):
             elem = self.__createElement()
