@@ -1,4 +1,4 @@
-class Text:
+class TextTransform:
     def __init__(self,text):
         self.text = text
 

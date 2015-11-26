@@ -1,5 +1,5 @@
 from app import app
-from app.textManipulate import Text
+from app.textManipulate import TextTransform
 from app.forms import TextForm
 from flask import render_template,redirect,url_for,request
 from flask.ext.bootstrap import Bootstrap
@@ -17,7 +17,7 @@ def index():
 
 @app.route('/scramble/<text>')
 def scramble(text):
-    text = Text(text)
+    text = TextTransform(text)
     return render_template('scramble.html',text=text)
 
 @app.route('/sms',methods=['POST'])
