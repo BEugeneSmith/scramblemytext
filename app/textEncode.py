@@ -64,3 +64,4 @@ class SVG(TextEncode):
         self.y = None # this too
 
 class VisObjects:
+    pass
