@@ -61,10 +61,11 @@ class Circle(TextEncode):
         self.circle = self.__generateCircle()
 
     def __generateCoord(self):
-        return randrange(50,90)
+        return randrange(10,90)
 
     def __generateCircle(self):
-        return '<circle cx="{0}" cy="{1}" r="{2}" stroke="{3}" stroke-width="1" fill="{4}" />'.format(self.x,self.y,self.radius,self.color_string,self.color_string)
+        return '<circle cx="{0}" cy="{1}" r="{2}" stroke="{3}" stroke-width="1" fill="{4}" />\
+        </circle>'.format(self.x,self.y,self.radius,self.color_string,self.color_string)
 
 class SVG:
 
@@ -75,9 +76,9 @@ class SVG:
     def __fillSVG(self):
         svg = '<svg width="1000" height="1000">'
 
-        # TODO: this needs to be iterated for several elements
-        elem = self.__createElement()
-        svg += elem
+        for i in range(15):
+            elem = self.__createElement()
+            svg += elem
 
         # closing the svg element
         svg += '</svg>'
