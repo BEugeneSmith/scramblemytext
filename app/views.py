@@ -13,10 +13,7 @@ bootstrap = Bootstrap(app)
 def index():
     form = TextForm()
     if form.is_submitted():
-        if hasNumbers(form.text):
-            return redirect(url_for('index'))
-        else:
-            return redirect(url_for('scramble',text=form.text.data))
+        return redirect(url_for('scramble',text=form.text.data))
     return render_template('index.html',form=form)
 
 @app.route('/scramble/<text>')
