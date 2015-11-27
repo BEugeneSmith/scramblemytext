@@ -41,7 +41,5 @@ class AppTest(unittest.TestCase):
         svg = SVG('brian')
         assert re.search(self.svg_pattern,svg.SVG) != None
 
-
-
 if __name__ == '__main__':
     unittest.main()
