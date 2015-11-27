@@ -1,7 +1,7 @@
 from app import app
 from app.textManipulate import TextTransform
 from app.VizGenerate import SVG
-from app.forms import TextForm
+from app.forms import TextForm,hasNumbers
 from flask import render_template,redirect,url_for,request
 from flask.ext.bootstrap import Bootstrap
 from twilio import twiml
@@ -13,7 +13,10 @@ bootstrap = Bootstrap(app)
 def index():
     form = TextForm()
     if form.is_submitted():
-        return redirect(url_for('scramble',text=form.text.data))
+        if hasNumbers(form.text):
+            return redirect(url_for('index'))
+        else:
+            return redirect(url_for('scramble',text=form.text.data))
     return render_template('index.html',form=form)
 
 @app.route('/scramble/<text>')

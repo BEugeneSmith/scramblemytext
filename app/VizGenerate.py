@@ -64,8 +64,7 @@ class Circle(TextEncode):
         return randrange(10,90)
 
     def __generateCircle(self):
-        return '<circle cx="{0}" cy="{1}" r="{2}" stroke="{3}" stroke-width="1" fill="{4}" />\
-        </circle>'.format(self.x,self.y,self.radius,self.color_string,self.color_string)
+        return '<circle cx="{0}" cy="{1}" r="{2}" stroke="{3}" stroke-width="1" fill="{4}" />'.format(self.x,self.y,self.radius,self.color_string,self.color_string)
 
 class SVG:
 
@@ -80,7 +79,6 @@ class SVG:
             elem = self.__createElement()
             svg += elem
 
-        # closing the svg element
         svg += '</svg>'
 
         return svg
