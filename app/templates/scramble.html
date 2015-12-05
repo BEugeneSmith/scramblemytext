@@ -4,7 +4,45 @@
 <p>piglatin: {{ text.piglatin() }}</p>
 <p>palindromic: {{ text.palindrome() }}</p>
 <p>backwards: {{ text.backwards() }}</p>
-<div class="circle">
-  {{ svg|safe }}
+<div class="viz">
+  <script src="{{ url_for('static',filename='d3.min.js')}}" charset="utf-8"></script>
+  <script type="text/javascript">
+    ds = {{ json|safe }};
+    for (i = 0; i < ds.length; i++) {
+      ds[i] = JSON.parse(ds[i]);
+    }
+    w = 1000
+    h = w
+
+    var linearScale = d3.scale.linear()
+                          .domain([0,255])
+                          .range([0,w]);
+
+    //Create SVG element
+    var svg = d3.select("div")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+    svg.selectAll("circle")
+           .data(ds)
+           .enter()
+           .append("circle")
+           .attr("cx", function(d) {
+             return linearScale(d[0]);
+           })
+           .attr("cy", function(d) {
+             return linearScale(d[1]);
+           })
+           .attr("r", function(d){
+             return d[2];
+           })
+           .attr("fill",function(d){
+             return d[3];
+           })
+           .attr("stroke-width",function(d){
+             return d[3];
+           })
+  </script>
 </div>
 {% endblock %}

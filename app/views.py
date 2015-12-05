@@ -1,6 +1,6 @@
 from app import app
 from app.textManipulate import TextTransform
-from app.VizGenerate import SVG
+from app.D3Preparation import CreateDataset
 from app.forms import TextForm
 from flask import render_template,redirect,url_for,request
 from flask.ext.bootstrap import Bootstrap
@@ -19,9 +19,9 @@ def index():
 @app.route('/scramble/<text>')
 def scramble(text):
     text = TextTransform(text)
-    svg = SVG(text.text)
+    ds = CreateDataset(text.text)
 
-    return render_template('scramble.html',text=text,svg=svg.SVG)
+    return render_template('scramble.html',text=text,json=ds.ds)
 
 @app.route('/sms',methods=['POST'])
 def sms():
